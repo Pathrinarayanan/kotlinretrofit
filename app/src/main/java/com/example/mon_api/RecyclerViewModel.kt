@@ -1,36 +1,25 @@
 package com.example.mon_api
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import com.google.gson.Gson
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-class RecyclerViewModel : ViewModel() {
+class RecyclerViewModel(private val repository: WidgetRepository) : ViewModel() {
 
     private val _widgetData = MutableLiveData<List<Widget>>()
     val widgetData: LiveData<List<Widget>> get() = _widgetData
 
     fun fetchDataFromApi() {
-        val apiLink = "https://run.mocky.io/v3/06780b47-23b7-4218-829b-7e5b7ed30fb3"
-        GlobalScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             try {
-                val response = OkHttpClient().newCall(Request.Builder().url(apiLink).build()).execute()
-                val responseData = response.body?.string()
-
-                withContext(Dispatchers.Main) {
-                    if (responseData != null) {
-                        val apiResponse = Gson().fromJson(responseData, ApiResponse::class.java)
-                        _widgetData.value = apiResponse.widgets
-                    }
-                }
+                val apiResponse = repository.fetchDataFromApi()
+                _widgetData.value = apiResponse.widgets
             } catch (e: Exception) {
                 e.printStackTrace()
+                // Handle error appropriately
             }
         }
     }

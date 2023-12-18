@@ -12,7 +12,8 @@ class RecyclerFragment : Fragment(R.layout.fragment_recycler) {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: WidgetAdapter
-    private val viewModel: RecyclerViewModel by viewModels()
+    private  lateinit var repository: WidgetRepository
+    private val viewModel: RecyclerViewModel by viewModels{RecyclerViewModelFactory(AppModule.repository)}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

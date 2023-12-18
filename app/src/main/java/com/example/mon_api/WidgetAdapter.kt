@@ -46,7 +46,6 @@ class WidgetAdapter(private var widgets: List<Widget>) :
             "text" -> VIEW_TYPE_TEXT
             "image" -> VIEW_TYPE_IMAGE
             else -> {
-                // Handle unknown widget types gracefully, e.g., fallback to text view
                 println("Unknown widget type: $widgetType. Falling back to text view.")
                 VIEW_TYPE_TEXT
             }

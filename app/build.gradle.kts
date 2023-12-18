@@ -38,6 +38,9 @@ android {
 
 dependencies {
     implementation ("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
     implementation ("com.squareup.picasso:picasso:2.71828")
     implementation ("com.google.code.gson:gson:2.8.9")
     implementation ("androidx.fragment:fragment-ktx:1.3.6")
