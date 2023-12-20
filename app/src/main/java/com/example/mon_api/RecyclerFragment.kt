@@ -10,23 +10,22 @@ import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerFragment : Fragment(R.layout.fragment_recycler) {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: WidgetAdapter
-    private  lateinit var repository: WidgetRepository
-    private val viewModel: RecyclerViewModel by viewModels{RecyclerViewModelFactory(AppModule.repository)}
+    private lateinit var mrecyclerView: RecyclerView
+    private lateinit var dataadapter: WidgetAdapter
+    private val Widget_viewModel: RecyclerViewModel by viewModels{RecyclerViewModelFactory(AppModule.repository)}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = view.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = WidgetAdapter(emptyList())
-        recyclerView.adapter = adapter
+        mrecyclerView = view.findViewById(R.id.recyclerView)
+        mrecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        dataadapter = WidgetAdapter(emptyList())
+        mrecyclerView.adapter = dataadapter
 
-        viewModel.widgetData.observe(viewLifecycleOwner, Observer { widgets ->
-            adapter.setData(widgets)
+        Widget_viewModel.widgetData.observe(viewLifecycleOwner, Observer { widgets ->
+            dataadapter.setData(widgets)
         })
 
-        viewModel.fetchDataFromApi()
+        Widget_viewModel.fetchDataFromApi()
     }
 }

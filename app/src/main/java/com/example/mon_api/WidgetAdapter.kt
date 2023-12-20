@@ -54,23 +54,23 @@ class WidgetAdapter(private var widgets: List<Widget>) :
 
 
     inner class TextViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val textView: TextView = itemView.findViewById(R.id.textView)
+        private val mtextView: TextView = itemView.findViewById(R.id.textView)
 
         fun bindText(text: String) {
-            textView.text = text
+            mtextView.text = text
         }
     }
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val imageView: ImageView = itemView.findViewById(R.id.imageView)
+        private val mImageView: ImageView = itemView.findViewById(R.id.imageView)
 
         fun bindImage(imageUrl: String) {
             if (imageUrl.isNotEmpty()) {
-                Picasso.get().load(imageUrl).into(imageView)
+                Picasso.get().load(imageUrl).into(mImageView)
             } else {
                 // Optionally handle the case where the image URL is empty
                 // For example, you could set a placeholder image or hide the ImageView
-                imageView.setImageResource(R.drawable.ic_launcher_background)
+                mImageView.setImageResource(R.drawable.ic_launcher_background)
             }
         }
     }

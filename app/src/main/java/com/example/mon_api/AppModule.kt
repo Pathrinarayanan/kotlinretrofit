@@ -5,11 +5,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object AppModule {
 
-    private val retrofit = Retrofit.Builder()
+    private val mRetrofit = Retrofit.Builder()
         .baseUrl("https://run.mocky.io/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    private val apiService: ApiService = retrofit.create(ApiService::class.java)
+    private val apiService: ApiService =  mRetrofit.create(ApiService::class.java)
     val repository = WidgetRepository(apiService)
 }

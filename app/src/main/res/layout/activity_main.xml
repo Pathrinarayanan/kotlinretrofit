@@ -7,7 +7,7 @@
     >
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/homeframeLayout"
         android:layout_width="432dp"
         android:layout_height="624dp"
         android:layout_marginBottom="10dp"

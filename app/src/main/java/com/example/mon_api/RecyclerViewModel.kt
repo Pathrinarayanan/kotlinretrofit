@@ -19,7 +19,7 @@ class RecyclerViewModel(private val repository: WidgetRepository) : ViewModel() 
                 _widgetData.value = apiResponse.widgets
             } catch (e: Exception) {
                 e.printStackTrace()
-                // Handle error appropriately
+
             }
         }
     }
