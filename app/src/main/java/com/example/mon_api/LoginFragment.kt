@@ -35,16 +35,16 @@ class LoginFragment : Fragment() {
             if (isCorrect) {
                 val fragmentManager = activity?.supportFragmentManager
                 val fragmentTransaction = fragmentManager?.beginTransaction()
-                fragmentTransaction?.replace(R.id.frameLayout, RecyclerFragment())
+                fragmentTransaction?.replace(R.id.homeframeLayout, RecyclerFragment())
                 fragmentTransaction?.commit()
                 Toast.makeText(mview.context, "Successful", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(mview.context, "Hey,Password does not match", Toast.LENGTH_SHORT)
+                Toast.makeText(mview.context, "Hey,Password does not match" , Toast.LENGTH_SHORT)
                     .show()
             }
         }
 
-        return view
+        return mview
     }
 
     private fun validate(user: String, pass: String): Boolean {
